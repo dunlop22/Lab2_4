@@ -139,7 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="avto.cpp" />
+    <ClCompile Include="koleso.cpp" />
+    <ClCompile Include="korobka.cpp" />
     <ClCompile Include="Lab2_4.cpp" />
+    <ClCompile Include="motor.cpp" />
+    <ClCompile Include="obchee.cpp" />
+    <ClCompile Include="voditel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="avto.h" />
+    <ClInclude Include="koleso.h" />
+    <ClInclude Include="korobka.h" />
+    <ClInclude Include="motor.h" />
+    <ClInclude Include="obchee.h" />
+    <ClInclude Include="voditel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

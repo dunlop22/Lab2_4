@@ -36,7 +36,6 @@ int main()
 		glmenu = _getch();
 		if (glmenu == '1')
 		{
-			double razgon_do_100, kolvo_mest, massa, obem_benzobaka;
 			char tip_privoda[20]; char name[20]; char tip_topliva[20];
 			do
 			{
@@ -54,7 +53,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						new_obchee_int();
+						new_obchee_info();
 					}
 					else
 					{
@@ -120,54 +119,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						cout << "Введите маркировку двигателя: ";
-						gets_s(name);
-						while (strlen(name) == 0)
-						{
-							printf("Неверно введена маркировка двигателя, попробуйте еще: ");
-							gets_s(name);
-						}
-						cout << "Введите рабочий объем двигателя в литрах: ";
-						while (scanf("%lf", &rab_obem) != 1 || rab_obem < 0)
-						{
-							printf("Неверно введено значение объема двигателя, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите количество лошадинных сил: ";
-						while (scanf("%lf", &koni) != 1 || koni < 0)
-						{
-							printf("Неверно введено значение количества лошадиных сил, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите средний расход топлива на 100км в литрах: ";
-						while (scanf("%lf", &rasxod) != 1 || rasxod < 0)
-						{
-							printf("Неверно введено значение расхода на 100км, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите количество цилиндров: ";
-						while (scanf("%lf", &kol_vo_cilindr) != 1 || kol_vo_cilindr < 0)
-						{
-							printf("Неверно введено значение количества цилиндров, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите количество клапанов на один цилиндр: ";
-						while (scanf("%lf", &klapan) != 1 || klapan < 0)
-						{
-							printf("Неверно введено значение количества клапанов, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						motorishe = new_motor(koni, rasxod, name, rab_obem, kol_vo_cilindr, klapan);
+						
 					}
 					else
 					{

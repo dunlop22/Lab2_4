@@ -30,6 +30,7 @@ int main()
 	motorishe.koni = -1;
 	korobas.kolvo_peredach = -1;
 	kolesiki.visota = -1;
+	
 	do
 	{
 		podmenu = 0;
@@ -38,7 +39,6 @@ int main()
 		glmenu = _getch();
 		if (glmenu == '1')
 		{
-			char tip_privoda[20]; char name[20]; char tip_topliva[20];
 			do
 			{
 				system("cls");
@@ -87,7 +87,6 @@ int main()
 				podmenu = _getch();
 				if (podmenu == '1')
 				{
-					char name[20];
 					do
 					{
 						system("cls");
@@ -128,8 +127,6 @@ int main()
 				podmenu = _getch();
 				if (podmenu == '1')
 				{
-					double kolvo_peredach;
-					char tip_korobki[20];
 					do
 					{
 						system("cls");
@@ -172,8 +169,6 @@ int main()
 				podmenu = _getch();
 				if (podmenu == '1')
 				{
-					double visota, shirina, diametr;
-					char tip_diska[20];
 					do
 					{
 						system("cls");
@@ -285,18 +280,16 @@ int main()
 				}
 			} while (podmenu != 27);
 		}
+		*/
 		else if (glmenu == '6')
 		{
 			do
 			{
-				double age, stag;
-				char name[50]; char pol[20]; char covid_19[20];
 				system("cls");
 				cout << "1) Добавление информации о водителе\n2) Просмотр информации о водителе\n3) Изменение состояния у водителя\n\nESC - Возврат в меню";
 				podmenu = _getch();
 				if (podmenu == '1')
 				{
-
 					do
 					{
 						system("cls");
@@ -306,43 +299,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						cout << "Введите ФИО водителя : ";
-						gets_s(name);
-						while (strlen(name) == 0)
-						{
-							printf("Неверно введен ФИО водителя, попробуйте еще: ");
-							gets_s(name);
-						}
-						cout << "Введите возраст: ";
-						while (scanf("%lf", &age) != 1)
-						{
-							printf("Неверно введен возраст водителя, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-						cout << "Введите пол водителя (М/Ж): ";
-						gets_s(pol);
-						while (strlen(pol) == 0)
-						{
-							printf("Неверно введен пол водителя, попробуйте еще: ");
-							gets_s(pol);
-						}
-						cout << "Введите статус Covid-19 (переболел/привит/неизвестно): ";
-						gets_s(covid_19);
-						while (strlen(covid_19) == 0)
-						{
-							printf("Неверно введен статус COVID-19, попробуйте еще: ");
-							gets_s(covid_19);
-						}
-						cout << "Введите стаж водителя: ";
-						while (scanf("%lf", &stag) != 1)
-						{
-							printf("Неверно введен стаж водителя, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						vodila = new_voditel(age, stag, name, pol, covid_19);
+						vodila = new_voditel_info();
 					}
 					else
 					{
@@ -355,42 +312,20 @@ int main()
 				else if (podmenu == '2')
 				{
 					system("cls");
-					if (&vodila.age >= 0)
-					{
-						prosmotr_voditel(&vodila);
-					}
-					else
-					{
-						cout << "Не найдена информация о водителе.";
-					}
+					prosmotr_voditel(vodila);
 					cout << "\n\nНажмите любую клавишу для возврата в меню.";
 					_getch();
 				}
 				else if (podmenu == '3')
 				{
-					if (&kolesiki.visota >= 0)
-					{
-						system("cls");
-						int diametr;
-						cout << "Введите новое состояние Covid-19 у водителя: ";
-
-						gets_s(covid_19);
-						while (strlen(name) == 0)
-						{
-							printf("Неверно введено состояние, попробуйте еще: ");
-							gets_s(name);
-						}
-
-						voditel_covid(&vodila, covid_19);
-					}
-					else
-					{
-						cout << "Не найден водитель для изменения состояния.\n\nНажмите любую клавишу для возврата в основное меню.";
-						_getch();
-					}
+					system("cls");
+					voditel_covid(&vodila);
+					cout << "\n\nНажмите любую клавишу для возврата в основное меню.";
+					_getch();
 				}
 			} while (podmenu != 27);
 		}
+		/*
 		else if (glmenu == '7')
 		{
 

@@ -15,5 +15,5 @@ struct voditel
 voditel new_voditel_info();
 voditel new_voditel(double age, double stag, char name[20], char pol[20], char covid_19[20]);
 void prosmotr_voditel(voditel vod);
-void voditel_covid(voditel* vod, char covid[20]);
+void voditel_covid(voditel* vod);
 

@@ -69,7 +69,20 @@ void prosmotr_voditel(voditel vod)
     }
 }
 
-void voditel_covid(voditel* vod, char covid[20])
+void voditel_covid(voditel* vod)
 {
-    strcpy(vod->covid_19, covid);
+	if (vod->age >= 0)
+	{
+		cout << "Введите новое состояние Covid-19 у водителя: ";
+		gets_s(vod->covid_19);
+		while (strlen(vod->covid_19) == 0)
+		{
+			printf("Неверно введено состояние, попробуйте еще: ");
+			gets_s(vod->covid_19);
+		}
+	}
+	else
+	{
+		cout << "Информация о водителе отсутствует";
+	}
 }

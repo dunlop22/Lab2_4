@@ -88,7 +88,7 @@ void prosmotr_motor(motor motorishe)
 
 void motor_force(motor* motorishe)
 {
-	if (motorishe->kol_vo_cilindr >= 0)
+	if (motorishe->koni >= 0)
 	{
 		system("cls");
 		double force;

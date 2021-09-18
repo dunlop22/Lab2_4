@@ -28,6 +28,7 @@ int main()
 	obchie.obem_benzobaka = -1;
 	vodila.age = -1;
 	motorishe.koni = -1;
+	korobas.kolvo_peredach = -1;
 	do
 	{
 		podmenu = 0;
@@ -112,11 +113,11 @@ int main()
 				}
 				else if (podmenu == '3')
 				{
+					system("cls");
 					motor_force(&motorishe);
 				}
 			} while (podmenu != 27);
 		}
-		/*
 		else if (glmenu == '3')
 		{
 			do
@@ -137,24 +138,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						system("cls");
-						cout << "Добавление информации о коробке передач автомобиля\n\nВведите тип коробки передач (АКПП/МКПП): ";
-						gets_s(tip_korobki);
-						while (strlen(tip_korobki) == 0)
-						{
-							printf("Неверно введена модель автомобиля, попробуйте еще: ");
-							gets_s(tip_korobki);
-						}
-
-						cout << "Введите количество передач коробки: ";
-						while (scanf("%lf", &kolvo_peredach) != 1 || kolvo_peredach > 0)
-						{
-							printf("Неверно введено значение количества передач, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						korobas = new_korobka_peredach(kolvo_peredach, tip_korobki);
+						korobas = new_korobka_info();
 					}
 					else
 					{
@@ -165,38 +149,16 @@ int main()
 				else if (podmenu == '2')
 				{
 					system("cls");
-					if (&korobas.kolvo_peredach >= 0)
-					{
-						prosmotr_korobka_peredach(&korobas);
-					}
-					else
-					{
-						cout << "Не найдена коробка передач для показа информации о ней.";
-					}
+					prosmotr_korobka_peredach(korobas);
 					cout << "\n\nНажмите любую клавишу для возврата в меню.";
 					_getch();
 				}
 				else if (podmenu == '3')
 				{
-					if (&korobas.kolvo_peredach >= 0)
-					{
-						system("cls");
-						double peredach;
-						cout << "Введите количество дополнительных передач (кол-во может быть отрицательным): ";
-						while (scanf("%lf", &peredach) != 1 || korobas.kolvo_peredach + peredach < 0)
-						{
-							printf("Неверно введено значение количества передач, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-						//korobas = korobka_peredach_peredacha_plus(&korobas, peredach);
-						korobka_peredach_peredacha_plus(&korobas, peredach);
-					}
-					else
-					{
-						cout << "Не найдена коробка передач для добавления передач.\n\nНажмите любую клавишу для возврата в основное меню.";
-						_getch();
-					}
+					system("cls");
+					korobka_peredach_peredacha_plus(&korobas);
+					cout << "\n\nНажмите любую клавишу для возврата в основное меню.";
+					_getch();
 				}
 			} while (podmenu != 27);
 		}
@@ -299,6 +261,7 @@ int main()
 				glmenu = 0;
 			} while (podmenu != 27);
 		}
+		/*
 		else if (glmenu == '5')
 		{
 			do

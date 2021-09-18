@@ -29,6 +29,7 @@ int main()
 	vodila.age = -1;
 	motorishe.koni = -1;
 	korobas.kolvo_peredach = -1;
+	kolesiki.visota = -1;
 	do
 	{
 		podmenu = 0;
@@ -182,40 +183,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						system("cls");
-						cout << "Добавление информации о колесах автомобиля\n\nВведите ширину колеса: ";
-						while (scanf("%lf", &shirina) != 1 || shirina < 0)
-						{
-							printf("Неверно введено значение ширины колеса, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите высоту колеса: ";
-						while (scanf("%lf", &visota) != 1 || visota < 0)
-						{
-							printf("Неверно введено значение высоты колеса, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите диаметр колеса в дюймах: ";
-						while (scanf("%lf", &diametr) != 1 || diametr < 0)
-						{
-							printf("Неверно введено значение диаметра колеса, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-
-						cout << "Введите тип колесного диска (штамповка/литье/ковка): ";
-						gets_s(tip_diska);
-						while (strlen(tip_diska) == 0)
-						{
-							printf("Неверно введен тип колесного диска, попробуйте еще: ");
-							gets_s(tip_diska);
-						}
-
-						kolesiki = new_koleso(shirina, visota, diametr, tip_diska);
+						kolesiki = new_koleso_info();
 					}
 					else
 					{
@@ -226,14 +194,7 @@ int main()
 				else if (podmenu == '2')
 				{
 					system("cls");
-					if (&kolesiki.shirina >= 0)
-					{
-						prosmotr_koleso(&kolesiki);
-					}
-					else
-					{
-						cout << "Не найдена информация о колесах.";
-					}
+					prosmotr_koleso(kolesiki);
 					cout << "\n\nНажмите любую клавишу для возврата в меню.";
 					_getch();
 				}
@@ -242,21 +203,10 @@ int main()
 					if (&kolesiki.visota >= 0)
 					{
 						system("cls");
-						int diametr;
-						cout << "Введите новый диаметр колеса (может быть отрицательным): ";
-						while (scanf("%lf", &diametr) != 1 || diametr > 0)
-						{
-							printf("Неверно введено значение диаметра, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-						koleso_diamter(&kolesiki, diametr);
+						koleso_diamter(&kolesiki);
 					}
-					else
-					{
-						cout << "Не найдено колесо для изменения диаметра.\n\nНажмите любую клавишу для возврата в основное меню.";
-						_getch();
-					}
+					cout << "\n\nНажмите любую клавишу для возврата в основное меню.";
+					_getch();
 				}
 				glmenu = 0;
 			} while (podmenu != 27);

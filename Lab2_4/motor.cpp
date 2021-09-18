@@ -2,8 +2,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <conio.h>
-
 using namespace std;
+
 motor new_motor_info()
 {
 	motor motor_create;

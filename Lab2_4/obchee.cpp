@@ -1,4 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "obchee.h"
+#include <conio.h>
 
 obchee new_obchee_info()
 {
@@ -91,9 +93,25 @@ void prosmotr_obchee(obchee obchee1)
 	{
 		cout << "Общая информация отсутствует";
 	}
+	
 }
 
-void obchee_name(obchee* obchee, char name[20])
+void obchee_name(obchee* obchee)
 {
-	strcpy(obchee->name, name);
+	if (&obchee->massa >= 0)
+	{
+		system("cls");
+		cout << "Введите новое название модели: ";
+		gets_s(obchee->name);
+		while (strlen(obchee->name) == 0)
+		{
+			printf("Неверно введена модель автомобиля, попробуйте еще: ");
+			gets_s(obchee->name);
+		}
+	}
+	else
+	{
+		cout << "Общая информация не найдена.\n\nНажмите любую клавишу для возврата в основное меню.";
+		_getch();
+	}
 }

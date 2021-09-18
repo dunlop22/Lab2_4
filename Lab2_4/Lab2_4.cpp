@@ -24,12 +24,12 @@ int main()
 	korobka_peredach korobas;
 	koleso kolesiki;
 	voditel vodila;
-	vodila.age = -1;
 	avto avtomobil1;
+	obchie.obem_benzobaka = -1;
+	vodila.age = -1;
+	motorishe.koni = -1;
 	do
 	{
-
-
 		podmenu = 0;
 		system("cls");
 		cout << "1) Общее\n2) Двигатель\n3) Коробка\n4) Колеса\n5) Автомобиль\n6) Водитель\n7) Создание нескольких автомобилей с увеличенным диаметром колес\n\nESC - выход";
@@ -53,7 +53,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						new_obchee_info();
+						obchie = new_obchee_info();
 					}
 					else
 					{
@@ -66,36 +66,13 @@ int main()
 				else if (podmenu == '2')
 				{
 					system("cls");
-					if (&obchie.massa >= 0)
-					{
-						prosmotr_obchee(&obchie);
-					}
-					else
-					{
-						cout << "Общая информация не найдена.";
-					}
-					cout << "\n\nНажмите любую клавишу для возврата в меню.";
+					prosmotr_obchee(obchie);
+					cout << "\n\nНажмите любую клавишу для возврата в меню";
 					_getch();
 				}
 				else if (podmenu == '3')
 				{
-					if (&obchie.massa >= 0)
-					{
-						system("cls");
-						cout << "Введите новое название модели: ";
-						gets_s(name);
-						while (strlen(name) == 0)
-						{
-							printf("Неверно введена модель автомобиля, попробуйте еще: ");
-							gets_s(name);
-						}
-						obchee_name(&obchie, name);
-					}
-					else
-					{
-						cout << "Общая информация не найдена.\n\nНажмите любую клавишу для возврата в основное меню.";
-						_getch();
-					}
+					obchee_name(&obchie);
 				}
 			} while (podmenu != 27);
 		}
@@ -108,7 +85,6 @@ int main()
 				podmenu = _getch();
 				if (podmenu == '1')
 				{
-					double koni, rasxod, klapan, rab_obem, kol_vo_cilindr;
 					char name[20];
 					do
 					{
@@ -119,7 +95,7 @@ int main()
 					system("cls");
 					if (menu == '1')
 					{
-						
+						motorishe = new_motor_info();
 					}
 					else
 					{
@@ -130,40 +106,17 @@ int main()
 				else if (podmenu == '2')
 				{
 					system("cls");
-					if (&motorishe.kol_vo_cilindr >= 0)
-					{
-						prosmotr_motor(&motorishe);
-					}
-					else
-					{
-						cout << "Не найден двигатель для показа информации о нем.";
-					}
+					prosmotr_motor(motorishe);
 					cout << "\n\nНажмите любую клавишу для возврата в меню.";
 					_getch();
 				}
 				else if (podmenu == '3')
 				{
-					if (&motorishe.kol_vo_cilindr >= 0)
-					{
-						system("cls");
-						double force;
-						cout << "Введите количество дополнительных сил (кол-во может быть отрицательным): ";
-						while (scanf("%lf", &force) != 1 || force + motorishe.koni < 0)
-						{
-							printf("Неверно введено значение количества лошадиных сил, попробуйте еще: ");
-							while (getchar() != '\n');
-						}
-						while (getchar() != '\n');
-						motor_force(&motorishe, force);
-					}
-					else
-					{
-						cout << "Не найден двигатель для добавления сил.\n\nНажмите любую клавишу для возврата в основное меню.";
-						_getch();
-					}
+					motor_force(&motorishe);
 				}
 			} while (podmenu != 27);
 		}
+		/*
 		else if (glmenu == '3')
 		{
 			do
@@ -600,6 +553,7 @@ int main()
 
 			} while (podmenu != 27);
 		}
+		*/
 	} while (glmenu != 27);
 
 }

@@ -1,6 +1,8 @@
 #include "motor.h"
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <conio.h>
+
 using namespace std;
 motor new_motor_info()
 {
@@ -21,7 +23,7 @@ motor new_motor_info()
 	while (getchar() != '\n');
 
 	cout << "Введите количество лошадинных сил: ";
-	while (scanf("%lf", &motor_create.koni) != 1 || koni < 0)
+	while (scanf("%lf", &motor_create.koni) != 1 || motor_create.koni < 0)
 	{
 		printf("Неверно введено значение количества лошадиных сил, попробуйте еще: ");
 		while (getchar() != '\n');
@@ -67,16 +69,16 @@ motor new_motor(double koni, double rasxod, char name[20], double rab_obem, doub
 	return motor_create;
 }
 
-void prosmotr_motor(motor* motorishe)
+void prosmotr_motor(motor motorishe)
 {
-	if (motorishe->rasxod >= 0)
+	if (motorishe.koni >= 0)
 	{
-		cout << "\n\nИНФОРАЦИЯ О ДВИГАТЕЛЕ:\nМаркировка двигателя: " << motorishe->name;
-		cout << "\nРабочий объем: " << motorishe->rab_obem;
-		cout << "\nМощность (л.с.): " << motorishe->koni;
-		cout << "\nСредний расход на 100км: " << motorishe->rasxod;
-		cout << "\nКоличество цилиндров: " << motorishe->kol_vo_cilindr;
-		cout << "\nКоличество клапанов на 1 цилиндр: " << motorishe->klapan;
+		cout << "\n\nИНФОРАЦИЯ О ДВИГАТЕЛЕ:\nМаркировка двигателя: " << motorishe.name;
+		cout << "\nРабочий объем: " << motorishe.rab_obem;
+		cout << "\nМощность (л.с.): " << motorishe.koni;
+		cout << "\nСредний расход на 100км: " << motorishe.rasxod;
+		cout << "\nКоличество цилиндров: " << motorishe.kol_vo_cilindr;
+		cout << "\nКоличество клапанов на 1 цилиндр: " << motorishe.klapan;
 	}
 	else
 	{
@@ -84,7 +86,25 @@ void prosmotr_motor(motor* motorishe)
 	}
 }
 
-void motor_force(motor* motorishe, double force_plus)
+void motor_force(motor* motorishe)
 {
-	motorishe->koni = motorishe->koni + force_plus;
+	if (motorishe->kol_vo_cilindr >= 0)
+	{
+		system("cls");
+		double force;
+		cout << "Введите количество дополнительных сил (кол-во может быть отрицательным): ";
+		while (scanf("%lf", &force) != 1 || force + motorishe->koni < 0)
+		{
+			printf("Неверно введено значение количества лошадиных сил, попробуйте еще: ");
+			while (getchar() != '\n');
+		}
+		while (getchar() != '\n');
+		motorishe->koni = motorishe->koni + force;
+	}
+	else
+	{
+		cout << "Не найден двигатель для добавления сил.\n\nНажмите любую клавишу для возврата в основное меню.";
+		_getch();
+	}
+	
 }

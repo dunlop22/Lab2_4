@@ -86,3 +86,4 @@ void voditel_covid(voditel* vod)
 		cout << "Информация о водителе отсутствует";
 	}
 }
+

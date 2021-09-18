@@ -98,7 +98,7 @@ void prosmotr_obchee(obchee obchee1)
 
 void obchee_name(obchee* obchee)
 {
-	if (&obchee->massa >= 0)
+	if (&obchee->obem_benzobaka >= 0)
 	{
 		system("cls");
 		cout << "Введите новое название модели: ";

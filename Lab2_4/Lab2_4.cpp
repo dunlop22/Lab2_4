@@ -30,7 +30,8 @@ int main()
 	motorishe.koni = -1;
 	korobas.kolvo_peredach = -1;
 	kolesiki.visota = -1;
-	
+	avtomobil1.har2.koni = -1;
+
 	do
 	{
 		podmenu = 0;
@@ -206,12 +207,10 @@ int main()
 				glmenu = 0;
 			} while (podmenu != 27);
 		}
-		/*
 		else if (glmenu == '5')
 		{
 			do
 			{
-
 				system("cls");
 				cout << "1) Сборка автомобиля из существующих компонентов\n2) Просмотр информации об автомобиле\n3) Привязка/отвязка водителя\n\nESC - выход в меню";
 				podmenu = _getch();
@@ -219,38 +218,21 @@ int main()
 				{
 					system("cls");
 					avtomobil1 = new_avto(&motorishe, &kolesiki, &korobas, &obchie);
-					if (avtomobil1.har3.shirina >= 0 && avtomobil1.har2.klapan >= 0 && avtomobil1.har4.kolvo_peredach >= 0 && avtomobil1.har5.kolvo_mest >= 0)
-					{
-						cout << "успешно собран";
-					}
-					else
-					{
-						cout << "Автомобиль не может быть собран из-за отсутствия даных о каком-либо из агрегатов";
-					}
 					cout << "\n\nНажите любую клавишу для возврата в меню";
 					_getch();
 				}
 				else if (podmenu == '2')
 				{
 					system("cls");
-					if (avtomobil1.har3.shirina >= 0)
-					{
-						prosmotr_avto(&avtomobil1);
-
-					}
-					else
-					{
-						cout << "Информация об автомобиле не найдена.";
-					}
+					prosmotr_avto(avtomobil1);
 					cout << "\n\nНажите любую клавишу для возврата в меню";
 					_getch();
 				}
 				else if (podmenu == '3')
 				{
 					system("cls");
-					if (vodila.age >= 0 && avtomobil1.har3.shirina >= 0 && avtomobil1.har2.klapan >= 0 && avtomobil1.har4.kolvo_peredach >= 0 && avtomobil1.har5.kolvo_mest >= 0)
+					if (vodila.age >= 0 && avtomobil1.har2.koni >= 0)
 					{
-
 						do
 						{
 							system("cls");
@@ -259,7 +241,7 @@ int main()
 							if (podmenu == '1')
 							{
 								system("cls");
-								vod_avto(&avtomobil1, &vodila);
+								vod_avto(&avtomobil1, vodila);
 								cout << "Водитель успешно привязан";
 							}
 							else if (podmenu == '2')
@@ -274,13 +256,13 @@ int main()
 					}
 					else
 					{
+						system("cls");
 						cout << "Информация о водителе или автомобиле не найдена\n\nНажите любую клавишу для возврата в меню";
 						_getch();
 					}
 				}
 			} while (podmenu != 27);
 		}
-		*/
 		else if (glmenu == '6')
 		{
 			do
@@ -325,10 +307,8 @@ int main()
 				}
 			} while (podmenu != 27);
 		}
-		/*
 		else if (glmenu == '7')
 		{
-
 			avto* mashina;
 			mashina = (avto*)malloc(0 * sizeof(avto));
 			int n = -1;
@@ -360,13 +340,13 @@ int main()
 					while (getchar() != '\n');
 					mashina = (avto*)malloc(n * sizeof(avto));
 					mashina[0] = new_avto(&motorishe, &kolesiki, &korobas, &obchie);
-					if (mashina[0].har3.shirina >= 0 && mashina[0].har2.klapan >= 0 && mashina[0].har4.kolvo_peredach >= 0 && mashina[0].har5.kolvo_mest >= 0)
+					if (mashina[0].har3.visota >= 0 && mashina[0].har2.koni>= 0 && mashina[0].har4.kolvo_peredach >= 0 && mashina[0].har5.obem_benzobaka >= 0)
 					{
 						cout << "успешно собран";
 						temp = kolesiki.diametr;
 						for (i = 1; i < n; i++)
 						{
-							koleso_diamter(&kolesiki, kolesiki.diametr + hag);
+							kolesiki.diametr = kolesiki.diametr + hag;
 							mashina[i] = new_avto(&motorishe, &kolesiki, &korobas, &obchie);
 						}
 						kolesiki.diametr = temp;
@@ -388,7 +368,7 @@ int main()
 						for (i = 0; i < n; i++)
 						{
 							cout << "АВТО №" << i + 1 << "\n\n";
-							prosmotr_avto(&mashina[i]);
+							prosmotr_avto(mashina[i]);
 						}
 					}
 					else
@@ -398,10 +378,8 @@ int main()
 					cout << "\n\nНажите любую клавишу для возврата в меню";
 					_getch();
 				}
-
 			} while (podmenu != 27);
 		}
-		*/
 	} while (glmenu != 27);
 
 }
